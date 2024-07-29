@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/SucharithaSathupalli01/Project-Development.git'
+            }
+        }
+        stage('config') {
+            steps {
+               bat '''
+               git config user.name "praveenkumarreddy0569"
+               git config user.email "praveenkumarreddy0569@gmail.com"
+                 '''
+           }
+        }
+         stage('steps') {
+            steps {
+               bat '''
+               git init
+               git status
+               git add .
+               git commit -m "created"
+               git push origin master
+               '''
+        }
+    }
+    }
+}
